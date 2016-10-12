@@ -1,6 +1,5 @@
 "use strict";
 
-var _ = require("lodash");
 var cheerio = require("cheerio");
 var Msg = require("../../models/msg");
 var request = require("request");
@@ -18,7 +17,7 @@ module.exports = function(irc, network) {
 
 		var links = [];
 		var split = data.message.replace(/\x02|\x1D|\x1F|\x16|\x0F|\x03(?:[0-9]{1,2}(?:,[0-9]{1,2})?)?/g, "").split(" ");
-		_.each(split, function(w) {
+		split.forEach(w => {
 			if (/^https?:\/\//.test(w)) {
 				links.push(w);
 			}
